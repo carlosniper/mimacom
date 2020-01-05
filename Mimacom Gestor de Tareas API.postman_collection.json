@@ -1,0 +1,188 @@
+{
+	"info": {
+		"_postman_id": "9ca8a18c-c4f7-4729-85e6-85247f90fbf6",
+		"name": "Mimacom Gestor de Tareas API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "createTarea()",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"titulo\":\"tarea 1\",\n\t\"descripcion\":\"descripcion tarea 1\",\n\t\"proyecto\":\"Proyecto 1\",\n\t\"estado\":\"NUEVO\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/tarea",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tarea"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getAllTareas()",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/tarea",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tarea"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getTareaById()",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/tarea/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tarea",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateTarea()",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id_tarea\":1,\n\t\"titulo\":\"Titulo tarea 1\",\n\t\"descripcion\":\"Descripcion tarea 1\",\n\t\"proyecto\":\"Proyecto 1\",\n\t\"estado\":\"EN_PROGRESO\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/tarea",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tarea"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteTarea()",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/tarea/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"tarea",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
