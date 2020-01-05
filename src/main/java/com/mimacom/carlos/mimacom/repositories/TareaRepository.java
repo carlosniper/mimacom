@@ -5,6 +5,9 @@ import org.springframework.stereotype.Repository;
 
 import com.mimacom.carlos.mimacom.model.Tarea;
 
+/**
+ * The Interface TareaRepository.
+ */
 @Repository
 public interface TareaRepository extends JpaRepository<Tarea, Long> {
 	// Empty block!!

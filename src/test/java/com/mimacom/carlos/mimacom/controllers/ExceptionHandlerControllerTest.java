@@ -12,12 +12,19 @@ import org.springframework.http.ResponseEntity;
 import com.mimacom.carlos.mimacom.model.ErrorResponse;
 import com.mimacom.carlos.utils.MimacomConstanst;
 
+/**
+ * The Class ExceptionHandlerControllerTest.
+ */
 @ExtendWith(MockitoExtension.class)
 public class ExceptionHandlerControllerTest implements MimacomConstanst{
 	
+	/** The exception handler controller. */
 	@InjectMocks
 	private ExceptionHandlerController exceptionHandlerController;
 	
+	/**
+	 * Exception handler ok.
+	 */
 	@Test
 	public void exceptionHandlerOk() {
 		

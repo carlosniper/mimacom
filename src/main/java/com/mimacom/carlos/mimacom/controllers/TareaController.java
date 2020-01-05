@@ -19,13 +19,22 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mimacom.carlos.mimacom.model.Tarea;
 import com.mimacom.carlos.mimacom.service.TareaService;
 
+/**
+ * The Class TareaController.
+ */
 @RestController
 @RequestMapping("tarea")
 public class TareaController {
 	
+	/** The tarea service. */
 	@Autowired
 	private TareaService tareaService;
 	
+	/**
+	 * Gets the all tareas.
+	 *
+	 * @return the all tareas
+	 */
 	@GetMapping
 	public ResponseEntity<List<Tarea>> getAllTareas(){
 		
@@ -37,6 +46,12 @@ public class TareaController {
 		return new ResponseEntity<List<Tarea>>(HttpStatus.NO_CONTENT);
 	}
 	
+	/**
+	 * Gets the tarea.
+	 *
+	 * @param id the id
+	 * @return the tarea
+	 */
 	@GetMapping("/{id}")
 	public ResponseEntity<Tarea> getTarea(@PathVariable Long id){
 		
@@ -48,6 +63,12 @@ public class TareaController {
 		return new ResponseEntity<Tarea>(HttpStatus.NOT_FOUND);
 	}
 	
+	/**
+	 * Creates the tarea.
+	 *
+	 * @param tarea the tarea
+	 * @return the response entity
+	 */
 	@PostMapping
 	public ResponseEntity<Tarea> createTarea(@RequestBody Tarea tarea){
 		
@@ -63,6 +84,12 @@ public class TareaController {
 		return new ResponseEntity<Tarea>(HttpStatus.BAD_REQUEST);
 	}
 	
+	/**
+	 * Update tarea.
+	 *
+	 * @param tarea the tarea
+	 * @return the response entity
+	 */
 	@PutMapping
 	public ResponseEntity<Tarea> updateTarea(@RequestBody Tarea tarea){
 		if(Objects.nonNull(tarea) && Objects.nonNull(tarea.getId_tarea())) {
@@ -77,6 +104,12 @@ public class TareaController {
 		return new ResponseEntity<Tarea>(HttpStatus.BAD_REQUEST);
 	}
 	
+	/**
+	 * Delete tarea.
+	 *
+	 * @param id the id
+	 * @return the response entity
+	 */
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Tarea> deleteTarea(@PathVariable Long id){
 		if(Objects.nonNull(id)) {

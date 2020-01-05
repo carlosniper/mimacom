@@ -5,30 +5,37 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import com.mimacom.carlos.mimacom.model.EstadoTareaEnum;
-import com.mimacom.carlos.mimacom.model.Proyecto;
 import com.mimacom.carlos.mimacom.model.Tarea;
 
+/**
+ * The Interface MimacomConstanst.
+ */
 public interface MimacomConstanst {
 	
+	/** The id. */
 	public static Long ID = 1L;
 	
+	/** The nombre proyecto. */
 	public static String NOMBRE_PROYECTO = "PROYECTO 1";
-	
-	public static Proyecto PROYECTO = new Proyecto(ID, NOMBRE_PROYECTO);
-	
-	public static List<Proyecto> LISTA_PROYECTOS =  Stream.of(PROYECTO).collect(Collectors.toList());
-	
+			
+	/** The titulo. */
 	public static String TITULO = "Titulo tarea";
 	
+	/** The descripcion. */
 	public static String DESCRIPCION = "Descripcion tarea";
 	
-	public static Tarea TAREA = new Tarea(ID, TITULO, DESCRIPCION, PROYECTO, EstadoTareaEnum.NUEVO);
+	/** The tarea. */
+	public static Tarea TAREA = new Tarea(ID, TITULO, DESCRIPCION, NOMBRE_PROYECTO, EstadoTareaEnum.NUEVO);
 	
+	/** The lista tareas. */
 	public static List<Tarea> LISTA_TAREAS = Stream.of(TAREA).collect(Collectors.toList());
 	
+	/** The exception message. */
 	public static String EXCEPTION_MESSAGE = "EXCEPTION_MESSAGE";
 	
+	/** The titulo mod. */
 	public static String TITULO_MOD = "TITULO MOD";
 	
+	/** The descripcion mod. */
 	public static String DESCRIPCION_MOD = "DESCRIPCION MOD";
 }

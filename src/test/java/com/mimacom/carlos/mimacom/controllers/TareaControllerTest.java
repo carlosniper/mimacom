@@ -15,21 +15,30 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.mimacom.carlos.mimacom.model.ErrorResponse;
 import com.mimacom.carlos.mimacom.model.EstadoTareaEnum;
 import com.mimacom.carlos.mimacom.model.Tarea;
 import com.mimacom.carlos.mimacom.service.TareaService;
 import com.mimacom.carlos.utils.MimacomConstanst;
 
+/**
+ * The Class TareaControllerTest.
+ */
 @ExtendWith(MockitoExtension.class)
 public class TareaControllerTest implements MimacomConstanst{
 	
+	/** The tarea service. */
 	@Mock
 	private TareaService tareaService;
 	
+	/** The tarea controller. */
 	@InjectMocks
 	private TareaController tareaController;
 	
+	/**
+	 * Gets the tareas ok.
+	 *
+	 * @return the tareas ok
+	 */
 	@Test
 	public void getTareasOk() {
 		
@@ -43,10 +52,14 @@ public class TareaControllerTest implements MimacomConstanst{
 		assertEquals(response.getBody().get(0).getEstado(), EstadoTareaEnum.NUEVO);
 		assertEquals(response.getBody().get(0).getId_tarea(), ID);
 		assertEquals(response.getBody().get(0).getTitulo(), TITULO);
-		assertEquals(response.getBody().get(0).getProyecto().getId_proyecto(), ID);
-		assertEquals(response.getBody().get(0).getProyecto().getNombre(), NOMBRE_PROYECTO);
+		assertEquals(response.getBody().get(0).getProyecto(), NOMBRE_PROYECTO);
 	}
 	
+	/**
+	 * Gets the tareas no content.
+	 *
+	 * @return the tareas no content
+	 */
 	@Test
 	public void getTareasNoContent() {
 		
@@ -57,6 +70,11 @@ public class TareaControllerTest implements MimacomConstanst{
 		assertEquals(response.getStatusCode(), HttpStatus.NO_CONTENT);
 	}
 	
+	/**
+	 * Gets the tarea by id ok.
+	 *
+	 * @return the tarea by id ok
+	 */
 	@Test
 	public void getTareaByIdOk() {
 		
@@ -69,10 +87,14 @@ public class TareaControllerTest implements MimacomConstanst{
 		assertEquals(response.getBody().getEstado(), EstadoTareaEnum.NUEVO);
 		assertEquals(response.getBody().getId_tarea(), ID);
 		assertEquals(response.getBody().getTitulo(), TITULO);
-		assertEquals(response.getBody().getProyecto().getId_proyecto(), ID);
-		assertEquals(response.getBody().getProyecto().getNombre(), NOMBRE_PROYECTO);
+		assertEquals(response.getBody().getProyecto(), NOMBRE_PROYECTO);
 	}
 	
+	/**
+	 * Gets the tarea by id not found.
+	 *
+	 * @return the tarea by id not found
+	 */
 	@Test
 	public void getTareaByIdNotFound() {
 		Mockito.when(this.tareaService.getTareaById(ID)).thenReturn(Optional.empty());
@@ -82,6 +104,9 @@ public class TareaControllerTest implements MimacomConstanst{
 		assertEquals(response.getStatusCode(), HttpStatus.NOT_FOUND);
 	}
 	
+	/**
+	 * Creates the tarea ok.
+	 */
 	@Test
 	public void createTareaOk() {
 		
@@ -94,10 +119,12 @@ public class TareaControllerTest implements MimacomConstanst{
 		assertEquals(response.getBody().getEstado(), EstadoTareaEnum.NUEVO);
 		assertEquals(response.getBody().getId_tarea(), ID);
 		assertEquals(response.getBody().getTitulo(), TITULO);
-		assertEquals(response.getBody().getProyecto().getId_proyecto(), ID);
-		assertEquals(response.getBody().getProyecto().getNombre(), NOMBRE_PROYECTO);
+		assertEquals(response.getBody().getProyecto(), NOMBRE_PROYECTO);
 	}
 	
+	/**
+	 * Creates the tarea ko.
+	 */
 	@Test
 	public void createTareaKo() {
 		
@@ -108,6 +135,9 @@ public class TareaControllerTest implements MimacomConstanst{
 		assertEquals(response.getStatusCode(), HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
+	/**
+	 * Creates the tarea bad request.
+	 */
 	@Test
 	public void createTareaBadRequest() {
 		
@@ -116,6 +146,9 @@ public class TareaControllerTest implements MimacomConstanst{
 		assertEquals(response.getStatusCode(), HttpStatus.BAD_REQUEST);
 	}
 	
+	/**
+	 * Update tarea ok.
+	 */
 	@Test
 	public void updateTareaOk() {
 		
@@ -128,10 +161,12 @@ public class TareaControllerTest implements MimacomConstanst{
 		assertEquals(response.getBody().getEstado(), EstadoTareaEnum.NUEVO);
 		assertEquals(response.getBody().getId_tarea(), ID);
 		assertEquals(response.getBody().getTitulo(), TITULO);
-		assertEquals(response.getBody().getProyecto().getId_proyecto(), ID);
-		assertEquals(response.getBody().getProyecto().getNombre(), NOMBRE_PROYECTO);
+		assertEquals(response.getBody().getProyecto(), NOMBRE_PROYECTO);
 	}
 	
+	/**
+	 * Update tarea ko.
+	 */
 	@Test
 	public void updateTareaKo() {
 		
@@ -142,6 +177,9 @@ public class TareaControllerTest implements MimacomConstanst{
 		assertEquals(response.getStatusCode(), HttpStatus.NOT_FOUND);
 	}
 	
+	/**
+	 * Update tarea bad request.
+	 */
 	@Test
 	public void updateTareaBadRequest() {
 		
@@ -150,6 +188,9 @@ public class TareaControllerTest implements MimacomConstanst{
 		assertEquals(response.getStatusCode(), HttpStatus.BAD_REQUEST);
 	}
 	
+	/**
+	 * Delete tarea ok.
+	 */
 	@Test
 	public void deleteTareaOk() {
 		
@@ -160,6 +201,9 @@ public class TareaControllerTest implements MimacomConstanst{
 		assertEquals(response.getStatusCode(), HttpStatus.OK);
 	}
 	
+	/**
+	 * Delete tarea ko.
+	 */
 	@Test
 	public void deleteTareaKo() {
 		
@@ -170,6 +214,9 @@ public class TareaControllerTest implements MimacomConstanst{
 		assertEquals(response.getStatusCode(), HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
+	/**
+	 * Delete tarea bad request.
+	 */
 	@Test
 	public void deleteTareaBadRequest() {
 		
